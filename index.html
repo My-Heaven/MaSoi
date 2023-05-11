@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        
+        .abs,
+        h2:after,
+        .cards .card figcaption,
+        .cards .card:after,
+        .news .card figcaption,
+        .news .card:after,
+        .news .article figcaption {
+            position: absolute;
+        }
+
+        .rel,
+        h2,
+        h2 strong,
+        .cards .card,
+        .news .card,
+        .news .article {
+            position: relative;
+        }
+
+        .fix {
+            position: fixed;
+        }
+
+        .dfix {
+            display: inline;
+        }
+
+        .dib {
+            display: inline-block;
+        }
+
+        .db {
+            display: block;
+        }
+
+        .dn {
+            display: none;
+        }
+
+        .df,
+        .cards,
+        .news {
+            display: flex;
+        }
+
+        .dif {
+            display: inline-flex;
+        }
+
+        .dg {
+            display: grid;
+        }
+
+        .dig {
+            display: inline-grid;
+        }
+
+        .vm,
+        h2,
+        h2 strong,
+        h2 span {
+            vertical-align: middle;
+        }
+
+        body {
+            background: #24282f;
+            font-family: 'Alegreya Sans';
+        }
+
+        .wrapper {
+            padding: 15px;
+        }
+
+        h2 {
+            padding: 10px;
+            padding-left: 25px;
+            color: #ccc;
+            margin: 0;
+        }
+
+        h2 strong {
+            z-index: 2;
+            background: #24282f;
+            padding: 4px 8px;
+        }
+
+        h2 span {
+            font-size: 0.7em;
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        h2:after {
+            content: '';
+            z-index: 1;
+            bottom: 50%;
+            margin-bottom: -2px;
+            height: 2px;
+            left: 0;
+            right: 0;
+            background: #373d47;
+        }
+
+        .cards,
+        .news {
+            flex-flow: row wrap;
+        }
+
+        .cards .card,
+        .news .card {
+            margin: 20px;
+            width: 180px;
+            height: 270px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+            transform-origin: center top;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            transition: 0.3s;
+        }
+
+        .cards .card img,
+        .news .card img {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        .cards .card figcaption,
+        .news .card figcaption {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            background: none;
+            color: #fff;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .cards .card:after,
+        .news .card:after {
+            content: '';
+            z-index: 10;
+            width: 200%;
+            height: 100%;
+            top: -90%;
+            left: -20px;
+            opacity: 0.1;
+            transform: rotate(45deg);
+            background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+            transition: 0.3s;
+        }
+
+        .cards .card:hover,
+        .news .card:hover,
+        .cards .card:focus,
+        .news .card:focus,
+        .cards .card:active,
+        .news .card:active {
+            box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+            transform: translateY(-3px) scale(1.05) rotateX(15deg);
+        }
+
+        .cards .card:hover figcaption,
+        .news .card:hover figcaption,
+        .cards .card:focus figcaption,
+        .news .card:focus figcaption,
+        .cards .card:active figcaption,
+        .news .card:active figcaption {
+            transform: none;
+        }
+
+        .cards .card:hover:after,
+        .news .card:hover:after,
+        .cards .card:focus:after,
+        .news .card:focus:after,
+        .cards .card:active:after,
+        .news .card:active:after {
+            transform: rotate(25deg);
+            top: -40%;
+            opacity: 0.15;
+        }
+
+        .news .article {
+            overflow: hidden;
+            width: 350px;
+            height: 235px;
+            margin: 20px;
+        }
+
+        .news .article img {
+            width: 100%;
+            min-height: 100%;
+            transition: 0.2s;
+        }
+
+        .news .article figcaption {
+            font-size: 14px;
+            text-shadow: 0 1px 0 rgba(51, 51, 51, 0.3);
+            color: #fff;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 40px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 18, 53, 0.6);
+            opacity: 0;
+            transform: scale(1.15);
+            transition: 0.2s;
+        }
+
+        .news .article figcaption h3 {
+            color: #3792e3;
+            font-size: 16px;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .news .article:hover img,
+        .news .article:focus img,
+        .news .article:active img {
+            filter: blur(3px);
+            transform: scale(0.97);
+        }
+
+        .news .article:hover figcaption,
+        .news .article:focus figcaption,
+        .news .article:active figcaption {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* footer */
+        .footer {
+            /* background-color: #222; */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .footer-button {
+            background-color: #555;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .footer-button:hover {
+            background-color: #777;
+        }
+
+        /* card effect */
+        @property --rotate {
+            syntax: "<angle>";
+            initial-value: 132deg;
+            inherits: false;
+        }
+
+        :root {
+            --card-height: 65vh;
+            --card-width: calc(var(--card-height) / 1.5);
+        }
+
+        .card {
+            background: #191c29;
+            width: var(--card-width);
+            height: var(--card-height);
+            padding: 3px;
+            position: relative;
+            border-radius: 6px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            font-size: 1.5em;
+            color: rgb(88 199 250 / 0%);
+            cursor: pointer;
+            font-family: cursive;
+        }
+
+        .card:hover {
+            color: rgb(88 199 250 / 100%);
+            transition: color 1s;
+        }
+
+        .card:hover:before,
+        .card:hover:after {
+            animation: none;
+            opacity: 0;
+        }
+
+        .card::before {
+            content: "";
+            width: 104%;
+            height: 102%;
+            border-radius: 8px;
+            background-image: linear-gradient(var(--rotate),
+                    #5ddcff,
+                    #3c67e3 43%,
+                    #4e00c2);
+            position: absolute;
+            z-index: -1;
+            top: -1%;
+            left: -2%;
+            animation: spin 2.5s linear infinite;
+        }
+
+        .card::after {
+            position: absolute;
+            content: "";
+            top: calc(var(--card-height) / 6);
+            left: 0;
+            right: 0;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+            transform: scale(0.8);
+            filter: blur(calc(var(--card-height) / 6));
+            background-image: linear-gradient(var(--rotate),
+                    #5ddcff,
+                    #3c67e3 43%,
+                    #4e00c2);
+            opacity: 1;
+            transition: opacity 0.5s;
+            animation: spin 2.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                --rotate: 0deg;
+            }
+
+            100% {
+                --rotate: 360deg;
+            }
+        }
+
+        a {
+            color: #212534;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            margin-top: 2rem;
+        }
+    </style>
+
+    <style>
+        .abs,
+        h2:after,
+        .cardst .cardt figcaptiont,
+        .cardst .cardt:after,
+        .news .cardt figcaption,
+        .news .cardt:after,
+        .news .article figcaption {
+            position: absolute;
+        }
+
+        .rel,
+        h2,
+        h2 strong,
+        .cardst .cardt,
+        .news .cardt,
+        .news .article {
+            position: relative;
+        }
+
+        .fix {
+            position: fixed;
+        }
+
+        .dfix {
+            display: inline;
+        }
+
+        .dib {
+            display: inline-block;
+        }
+
+        .db {
+            display: block;
+        }
+
+        .dn {
+            display: none;
+        }
+
+        .df,
+        .cardst,
+        .news {
+            display: flex;
+        }
+
+        .dif {
+            display: inline-flex;
+        }
+
+        .dg {
+            display: grid;
+        }
+
+        .dig {
+            display: inline-grid;
+        }
+
+        .vm,
+        h2,
+        h2 strong,
+        h2 span {
+            vertical-align: middle;
+        }
+
+        body {
+            background: #24282f;
+            font-family: 'Alegreya Sans';
+        }
+
+        .wrapper {
+            padding: 15px;
+        }
+
+        h2 {
+            padding: 10px;
+            padding-left: 25px;
+            color: #ccc;
+            margin: 0;
+        }
+
+        h2 strong {
+            z-index: 2;
+            background: #24282f;
+            padding: 4px 8px;
+        }
+
+        h2 span {
+            font-size: 0.7em;
+            color: #aaa;
+            margin-left: 10px;
+        }
+
+        h2:after {
+            content: '';
+            z-index: 1;
+            bottom: 50%;
+            margin-bottom: -2px;
+            height: 2px;
+            left: 0;
+            right: 0;
+            background: #373d47;
+        }
+
+        .cardst,
+        .news {
+            flex-flow: row wrap;
+        }
+
+        .cardst .cardt,
+        .news .cardt {
+            margin: 20px;
+            width: 180px;
+            height: 270px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+            transform-origin: center top;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+            transition: 0.3s;
+        }
+
+        .cardst .cardt img,
+        .news .cardt img {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        .cardst .cardt figcaption,
+        .news .cardt figcaption {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            padding-bottom: 10px;
+            font-size: 20px;
+            background: none;
+            color: #fff;
+            transform: translateY(100%);
+            transition: 0.3s;
+        }
+
+        .cardst .cardt:after,
+        .news .cardt:after {
+            content: '';
+            z-index: 10;
+            width: 200%;
+            height: 100%;
+            top: -90%;
+            left: -20px;
+            opacity: 0.1;
+            transform: rotate(45deg);
+            background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+            transition: 0.3s;
+        }
+
+        .cardst .cardt:hover,
+        .news .cardt:hover,
+        .cardst .cardt:focus,
+        .news .cardt:focus,
+        .cardst .cardt:active,
+        .news .cardt:active {
+            box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+            transform: translateY(-3px) scale(1.05) rotateX(15deg);
+        }
+
+        .cardst .cardt:hover figcaption,
+        .newst .cardt:hover figcaption,
+        .cardst .cardt:focus figcaption,
+        .news .cardt:focus figcaption,
+        .cardst .cardt:active figcaption,
+        .news .cardt:active figcaption {
+            transform: none;
+        }
+
+        .cardst .cardt:hover:after,
+        .news .cardt:hover:after,
+        .cardst .cardt:focus:after,
+        .news .cardt:focus:after,
+        .cardst .cardt:active:after,
+        .news .cardt:active:after {
+            transform: rotate(25deg);
+            top: -40%;
+            opacity: 0.15;
+        }
+
+        .news .article {
+            overflow: hidden;
+            width: 350px;
+            height: 235px;
+            margin: 20px;
+        }
+
+        .news .article img {
+            width: 100%;
+            min-height: 100%;
+            transition: 0.2s;
+        }
+
+        .news .article figcaption {
+            font-size: 14px;
+            text-shadow: 0 1px 0 rgba(51, 51, 51, 0.3);
+            color: #fff;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            padding: 40px;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 18, 53, 0.6);
+            opacity: 0;
+            transform: scale(1.15);
+            transition: 0.2s;
+        }
+
+        .news .article figcaption h3 {
+            color: #3792e3;
+            font-size: 16px;
+            margin-bottom: 0;
+            font-weight: bold;
+        }
+
+        .news .article:hover img,
+        .news .article:focus img,
+        .news .article:active img {
+            filter: blur(3px);
+            transform: scale(0.97);
+        }
+
+        .news .article:hover figcaption,
+        .news .article:focus figcaption,
+        .news .article:active figcaption {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+    <div class="footer">
+        <button class="footer-button" id="myButton" onclick="getItemSelected()">PLAY</button>
+    </div>
+
+    <dialog class="card_container" id="showImage" style="padding: initial;border-radius: 8px;z-index: 1;">
+    </dialog>
+
+    <div class="wrapper">
+        <div class="cards" id="gamePlay" style="display: flex;">
+
+        </div>
+
+        <div class="cardst" id="gameSetting">
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/1.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                </figure>
+                <div>
+                    <input type="checkbox" name="setting" value="1">
+                    <input type="number" min="1" max="10" id="1" value="1">
+                </div>
+            </label>
+
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/2.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="2">
+                        <input type="number" min="1" max="10" id="2" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img src="img/3.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="3">
+                        <input type="number" min="1" max="10" id="3" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img src="img/4.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="4">
+                        <input type="number" min="1" max="10" id="4" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/5.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="5">
+                        <input type="number" min="1" max="10" id="5" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/6.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="6">
+                        <input type="number" min="1" max="10" id="6" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/7.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="7">
+                        <input type="number" min="1" max="10" id="7" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/8.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="8">
+                        <input type="number" min="1" max="10" id="8" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/9.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="9">
+                        <input type="number" min="1" max="10" id="9" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/10.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="10">
+                        <input type="number" min="1" max="10" id="10" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/11.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="11">
+                        <input type="number" min="1" max="10" id="11" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/12.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="12">
+                        <input type="number" min="1" max="10" id="12" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/13.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="13">
+                        <input type="number" min="1" max="10" id="13" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/14.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="14">
+                        <input type="number" min="1" max="10" id="14" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/15.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="15">
+                        <input type="number" min="1" max="10" id="15" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/16.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="16">
+                        <input type="number" min="1" max="10" id="16" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/17.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="17">
+                        <input type="number" min="1" max="10" id="17" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/18.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="18">
+                        <input type="number" min="1" max="10" id="18" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/19.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="19">
+                        <input type="number" min="1" max="10" id="19" value="1">
+                    </div>
+                </figure>
+
+            </label><label>
+
+                <figure class="cardt">
+
+                    <img srimg/20.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="20">
+                        <input type="number" min="1" max="10" id="20" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/21.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="21">
+                        <input type="number" min="1" max="10" id="21" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/22.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="22">
+                        <input type="number" min="1" max="10" id="22" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/23.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="23">
+                        <input type="number" min="1" max="10" id="23" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/24.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="24">
+                        <input type="number" min="1" max="10" id="24" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/25.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="25">
+                        <input type="number" min="1" max="10" id="25" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/26.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="26">
+                        <input type="number" min="1" max="10" id="26" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/27.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="27">
+                        <input type="number" min="1" max="10" id="27" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img srimg/28.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="28">
+                        <input type="number" min="1" max="10" id="28" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/29.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="29">
+                        <input type="number" min="1" max="10" id="29" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/30.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="30">
+                        <input type="number" min="1" max="10" id="30" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/31.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="31">
+                        <input type="number" min="1" max="10" id="31" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/32.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="32">
+                        <input type="number" min="1" max="10" id="32" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/33.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="33">
+                        <input type="number" min="1" max="10" id="33" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/34.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="34">
+                        <input type="number" min="1" max="10" id="34" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/35.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="35">
+                        <input type="number" min="1" max="10" id="35" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/36.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="36">
+                        <input type="number" min="1" max="10" id="36" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/37.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="37">
+                        <input type="number" min="1" max="10" id="37" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/38.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="38">
+                        <input type="number" min="1" max="10" id="38" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/39.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="39">
+                        <input type="number" min="1" max="10" id="39" value="1">
+                    </div>
+                </figure>
+
+            </label>
+            <label>
+
+                <figure class="cardt">
+
+                    <img src="img/40.jpg" style="object-fit: cover;" />
+                    <figcaption>Select card</figcaption>
+                    <div>
+                        <input type="checkbox" name="setting" value="40">
+                        <input type="number" min="1" max="10" id="40" value="1">
+                    </div>
+                </figure>
+
+            </label>
+        </div>
+        <script>
+            function randomRole() {
+                // Lấy thẻ container
+                const container = document.getElementById("gamePlay");
+
+                // Lấy danh sách các thẻ con
+                const boxes = Array.from(container.getElementsByClassName("card_container"));
+
+                // Trộn các thẻ con
+                boxes.sort(() => Math.random() - 0.5);
+
+                // Xóa các thẻ con hiện có khỏi container
+                while (container.firstChild) {
+                    container.firstChild.remove();
+                }
+
+                // Thêm lại các thẻ con đã được trộn vào container
+                boxes.forEach((box) => {
+                    container.appendChild(box);
+                });
+            }
+
+            function ChangeImage(element) {
+                // console.log(element)
+                // var image = document.getElementById(element);
+                // var imageName = element.split("-")[0];
+                // image.src = '../img/' + imageName + '.jpg';
+                // image.style.objectFit = 'cover'
+                // console.log(element)
+
+                CreateImageHTML(element)
+                document.getElementById(element).style.display = 'none'
+                document.getElementById('showImage').open = true;
+            }
+            function CloseDialog(element) {
+                document.getElementById('showImage').open = false;
+            }
+
+
+            // const card1 = document.getElementById('card1');
+
+            // // Gán sự kiện click cho phần tử <figure>
+            // card1.addEventListener('click', function () {
+            //     // Thêm hoặc xóa class "clicked" để thay đổi hiệu ứng CSS
+            //     this.classList.toggle('clicked');
+            // });
+
+            // const cardcontainer = document.querySelector('.card_container');
+
+            // cardcontainer.addEventListener('click', function () {
+            //     cardcontainer.classList.toggle('flip');
+            // })
+
+            function getItemSelected() {
+                const checkboxes = document.querySelectorAll('input[name="setting"]');
+                const selectedFruits = [];
+
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        var quantity = document.getElementById(checkbox.value).value;
+                        selectedFruits.push(checkbox.value + '-' + quantity);
+                    }
+                });
+
+                change(selectedFruits);
+
+                // console.log(selectedFruits);
+
+
+
+            }
+
+            function CreateImageHTML(ele) {
+                var html = '';
+                var i = ele.split('-')[0];
+                var container = document.getElementById('showImage');
+                container.innerHTML = `<div class="card">
+                                <img style="width: 100%; height: 100%;" onclick="CloseDialog('${ele}-img')" src="img/${i}.jpg" />
+                                </div>`;
+            }
+
+            function createHTML(selectedFruits) {
+                var html = '';
+                var container = document.getElementById('gamePlay');
+                selectedFruits.forEach(function (item) {
+                    // console.log(item)
+                    // Append HTML for each item to the string
+                    var ele = item.split("-");
+
+                    console.log(ele.length)
+                    if (ele[1] > 1) {
+                        for (var i = 0; i < ele[1]; i++) {
+                            var result = ele[0] + '-' + (i + 1)
+                            console.log(result)
+                            html += `<div class="card_container" id="${result}">
+                                    <figure class="card" onclick="ChangeImage('${result}')">
+
+                                        <img id="${result}" src="https://www.linkpicture.com/q/4_543.jpg" />
+
+                                        <figcaption>Select card</figcaption>
+                                        
+                                    </figure>
+
+                                    </div>
+                                        `;
+                        }
+
+                    } else {
+                        html += `<div class="card_container" id="${item}">
+                        <figure class="card" onclick="ChangeImage('${item}')">
+
+                            <img id="${item}" src="https://www.linkpicture.com/q/4_543.jpg" />
+
+                            <figcaption>Select card</figcaption>
+                            
+                        </figure>
+
+                        </div>
+                            `;
+                    }
+
+
+
+                });
+                container.innerHTML = html;
+            }
+
+            function change(selectedFruits) {
+
+                var container = document.getElementById("gamePlay");
+
+
+                var buttonName = document.getElementById("myButton").innerText;
+                var gameSetting = document.getElementById('gameSetting');
+                buttonName == 'PLAY' == true ? ((gamePlay.style.display = 'flex') & (gameSetting.style.display = 'none') & createHTML(selectedFruits) & randomRole()) : ((gamePlay.style.display = 'none') & (gameSetting.style.display = 'flex'))
+                buttonName == 'PLAY' == true ? buttonName = document.getElementById("myButton").innerHTML = 'END' : buttonName = document.getElementById("myButton").innerHTML = 'PLAY'
+
+            }
+
+        </script>
+
+    </div>
+</body>
+
+</html>
