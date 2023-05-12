@@ -8,9 +8,8 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="LoadRole()">
     <style>
-        
         .abs,
         h2:after,
         .cards .card figcaption,
@@ -54,6 +53,8 @@
         .cards,
         .news {
             display: flex;
+            justify-items: center;
+            justify-content: center;
         }
 
         .dif {
@@ -599,6 +600,29 @@
             transform: none;
         }
     </style>
+
+
+    <script>
+        function LoadRole() {
+            var html = '';
+            var container = document.getElementById('gamePlay');
+            for (var i = 1; i < 41; i++) {
+                html += `<label style="text-align: center;">
+                <div class="card" style="text-align: center;">
+                    <img src="img/${i}.jpg" style="width: 110%; height: 106%; margin-left: 4px;" />
+                    <figcaption>Select card</figcaption>
+                </div>
+                <div style="text-align: center;">
+                    <input type="checkbox" name="setting" value="${i}">
+                    <input type="number" min="1" max="10" id="${i}" value="1">
+                </div>
+
+            </label>`
+            }
+
+            container.innerHTML = html;
+        }
+    </script>
     <div class="footer">
         <button class="footer-button" id="myButton" onclick="getItemSelected()">PLAY</button>
     </div>
@@ -611,509 +635,8 @@
 
         </div>
 
-        <div class="cardst" id="gameSetting">
-            <label>
+        <div class="cards" id="gameSetting" style="display: flex;">
 
-                <figure class="cardt">
-
-                    <img src="img/1.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                </figure>
-                <div>
-                    <input type="checkbox" name="setting" value="1">
-                    <input type="number" min="1" max="10" id="1" value="1">
-                </div>
-            </label>
-
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/2.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="2">
-                        <input type="number" min="1" max="10" id="2" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/3.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="3">
-                        <input type="number" min="1" max="10" id="3" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/4.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="4">
-                        <input type="number" min="1" max="10" id="4" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/5.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="5">
-                        <input type="number" min="1" max="10" id="5" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/6.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="6">
-                        <input type="number" min="1" max="10" id="6" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/7.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="7">
-                        <input type="number" min="1" max="10" id="7" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/8.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="8">
-                        <input type="number" min="1" max="10" id="8" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/9.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="9">
-                        <input type="number" min="1" max="10" id="9" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/10.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="10">
-                        <input type="number" min="1" max="10" id="10" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/11.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="11">
-                        <input type="number" min="1" max="10" id="11" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/12.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="12">
-                        <input type="number" min="1" max="10" id="12" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/13.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="13">
-                        <input type="number" min="1" max="10" id="13" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/14.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="14">
-                        <input type="number" min="1" max="10" id="14" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/15.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="15">
-                        <input type="number" min="1" max="10" id="15" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/16.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="16">
-                        <input type="number" min="1" max="10" id="16" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/17.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="17">
-                        <input type="number" min="1" max="10" id="17" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/18.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="18">
-                        <input type="number" min="1" max="10" id="18" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/19.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="19">
-                        <input type="number" min="1" max="10" id="19" value="1">
-                    </div>
-                </figure>
-
-            </label><label>
-
-                <figure class="cardt">
-
-                    <img src="img/20.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="20">
-                        <input type="number" min="1" max="10" id="20" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/21.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="21">
-                        <input type="number" min="1" max="10" id="21" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/22.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="22">
-                        <input type="number" min="1" max="10" id="22" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/23.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="23">
-                        <input type="number" min="1" max="10" id="23" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/24.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="24">
-                        <input type="number" min="1" max="10" id="24" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/25.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="25">
-                        <input type="number" min="1" max="10" id="25" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/26.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="26">
-                        <input type="number" min="1" max="10" id="26" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/27.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="27">
-                        <input type="number" min="1" max="10" id="27" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/28.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="28">
-                        <input type="number" min="1" max="10" id="28" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/29.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="29">
-                        <input type="number" min="1" max="10" id="29" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/30.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="30">
-                        <input type="number" min="1" max="10" id="30" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/31.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="31">
-                        <input type="number" min="1" max="10" id="31" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/32.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="32">
-                        <input type="number" min="1" max="10" id="32" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/33.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="33">
-                        <input type="number" min="1" max="10" id="33" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/34.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="34">
-                        <input type="number" min="1" max="10" id="34" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/35.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="35">
-                        <input type="number" min="1" max="10" id="35" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/36.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="36">
-                        <input type="number" min="1" max="10" id="36" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/37.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="37">
-                        <input type="number" min="1" max="10" id="37" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/38.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="38">
-                        <input type="number" min="1" max="10" id="38" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/39.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="39">
-                        <input type="number" min="1" max="10" id="39" value="1">
-                    </div>
-                </figure>
-
-            </label>
-            <label>
-
-                <figure class="cardt">
-
-                    <img src="img/40.jpg" style="object-fit: cover;" />
-                    <figcaption>Select card</figcaption>
-                    <div>
-                        <input type="checkbox" name="setting" value="40">
-                        <input type="number" min="1" max="10" id="40" value="1">
-                    </div>
-                </figure>
-
-            </label>
         </div>
         <script>
             function randomRole() {
@@ -1148,6 +671,8 @@
                 CreateImageHTML(element)
                 document.getElementById(element).style.display = 'none'
                 document.getElementById('showImage').open = true;
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             function CloseDialog(element) {
                 document.getElementById('showImage').open = false;
@@ -1249,8 +774,8 @@
 
                 var buttonName = document.getElementById("myButton").innerText;
                 var gameSetting = document.getElementById('gameSetting');
-                buttonName == 'PLAY' == true ? ((gamePlay.style.display = 'flex') & (gameSetting.style.display = 'none') & createHTML(selectedFruits) & randomRole()) : ((gamePlay.style.display = 'none') & (gameSetting.style.display = 'flex'))
-                buttonName == 'PLAY' == true ? buttonName = document.getElementById("myButton").innerHTML = 'END' : buttonName = document.getElementById("myButton").innerHTML = 'PLAY'
+                buttonName == 'PLAY' == true ? ((gamePlay.style.display = 'flex') & (gameSetting.style.display = 'none') & createHTML(selectedFruits) & randomRole()) : ((gamePlay.style.display = 'none') & (gameSetting.style.display = 'flex') & location.reload())
+                buttonName == 'PLAY' == true ? buttonName = document.getElementById("myButton").innerHTML = 'END' : (buttonName = document.getElementById("myButton").innerHTML = 'PLAY')
 
             }
 
