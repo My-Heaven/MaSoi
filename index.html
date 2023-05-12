@@ -606,7 +606,20 @@
         function LoadRole() {
             var html = '';
             var container = document.getElementById('gamePlay');
-            for (var i = 1; i < 41; i++) {
+            for (var i = 36; i < 42; i++) {
+                html += `<label style="text-align: center;">
+                <div class="card" style="text-align: center;">
+                    <img src="img/${i}.jpg" style="width: 99%; height: 99%;" />
+                    <figcaption>Select card</figcaption>
+                </div>
+                <div style="text-align: center;">
+                    <input type="checkbox" name="setting" value="${i}">
+                    <input type="number" min="1" max="10" id="${i}" value="1">
+                </div>
+
+            </label>`
+            }
+            for (var i = 1; i < 35; i++) {
                 html += `<label style="text-align: center;">
                 <div class="card" style="text-align: center;">
                     <img src="img/${i}.jpg" style="width: 110%; height: 106%; margin-left: 4px;" />
